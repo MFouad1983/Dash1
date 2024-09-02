@@ -9,8 +9,8 @@ def gg2(x):
     return px.box( df[df['country'].isin(x)], x='country', color='country', y='lifeExp')
 
 
-app = Dash(external_stylesheets=[dbc.themes.COSMO])
-
+app = Dash(__main__)
+server=app.server
 # Define the sidebar layout
 sidebar = html.Div(
     [
