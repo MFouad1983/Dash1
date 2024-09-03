@@ -1,6 +1,5 @@
 from dash import dcc, html, Dash ,  dash_table
 from dash.dependencies import Input, Output
-import dash_bootstrap_components as dbc
 import plotly.express as px
 df=px.data.gapminder()
 def gg1(x):
@@ -9,7 +8,7 @@ def gg2(x):
     return px.box( df[df['country'].isin(x)], x='country', color='country', y='lifeExp')
 
 
-app = Dash(external_stylesheets=[dbc.themes.COSMO])
+app = Dash()
 
 # Define the sidebar layout
 sidebar = html.Div(
@@ -63,4 +62,4 @@ def updatetext(x):
         return gg1(x), gg2(x),'Life expectancy of '+str(x),df[df['country'].isin(x)].to_dict('records')
     
 if __name__ == "__main__":
-    app.run_server(debug=True, port=8888)
+    app.run_server(debug=True)
